@@ -1,3 +1,5 @@
+import kalkulator
+
 awal = int(input("masukkan nilai awal = "))
 akhir = int(input("masukkan nilai akhir= "))
 
