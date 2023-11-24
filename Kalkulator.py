@@ -28,15 +28,15 @@ pilihan = int(input("masukkan pilihan = "))
 if pilihan == 1:
     print(tambah(awal, akhir))
 
-if pilihan == 2:
+elif pilihan == 2:
     print(kurang(awal, akhir))
 
-if pilihan == 3:
+elif pilihan == 3:
     print(kali(awal, akhir))
 
-if pilihan == 4:
+elif pilihan == 4:
     print(bagi(awal, akhir))
-
-if pilihan == 4:
-    print(bagi(awal, akhir) == 0)
-    print("Tidak bisa dibagi 0")
+    if akhir or awal == 0:
+        print("Tidak bisa dibagi 0")
+    else:
+        print(bagi(awal, akhir))
