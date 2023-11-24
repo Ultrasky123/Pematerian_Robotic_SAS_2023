@@ -6,7 +6,7 @@ print("Nilai Akhir", akhir)
 
 print(" ")
 
-def pertambah(a,b) :
+def penambahan(a,b) :
     return a + b
 
 def pengkurangan(a,b) :
@@ -19,24 +19,24 @@ def pembagian(a,b) :
     return a / b
 
 print("Beberapa Pilihan Operasi")
-print("1. tambah")
-print("2. kurang")
-print("3. kali")
-print("4. bagi")
+print("1. penambahan")
+print("2. pengkurangan")
+print("3. pengkalian")
+print("4. pembagian")
 
 pilihan = int(input("Input Operasi = "))
 
 if pilihan == 1:
-    print (tambah(awal,akhir))
+    print ("Hasil Penambahan = ", penambahan(awal,akhir))
 
 elif pilihan == 2:
-    print (kurang(awal,akhir))
+    print ("Hasil pengkurangan = ", pengkurangan(awal,akhir))
 elif pilihan == 3:
-    print (kali(awal,akhir))
+    print ("Hasil Pengkalian = ", pengkalian(awal,akhir))
 elif pilihan == 4:
     if akhir == 0:
-        print("Tidak bisa dibagi 0")
+        print("Tidak bisa dipembagian 0")
     else:
-        print (bagi(awal,akhir))
+        print ("Hasil Penambahan = ", pembagian(awal,akhir))
 else:
     print ("Masukan pilihan operasi yang benar")
