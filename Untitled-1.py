@@ -36,8 +36,8 @@ elif pilihan == 3 :
 
 elif pilihan == 4 :
     print(pembagian(awal,akhir))
-    if pembagian < 0:
-        print ('tidak bisa di bagi nol')
+    if akhir < 0 or awal <0 :
+        print('tidak bisa di bagi 0')
 
 else :
     print ('tidak ada')
