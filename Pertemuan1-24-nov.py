@@ -36,5 +36,5 @@ elif pilihan == 4:
         print(awal, " / ", akhir, " = ", bagi(awal, akhir))
 
 else:
-    print("Invalid")
+    print("Invalid Input")
 
