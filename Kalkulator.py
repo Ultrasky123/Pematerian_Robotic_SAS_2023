@@ -6,18 +6,6 @@ akhir = int(input("Masukkan nilai akhir = "))
 print("Ini Nilai Awal = ", awal)
 print("Ini Nilai Awal = ", akhir)
 
-def tambah(a, b):
-    return a+b
-
-def kurang(a, b):
-    return a-b
-
-def kali(a, b):
-    return a*b
-
-def bagi(a, b):
-    return a/b
-
 print("PROGRAM CALCULATOR SEDERHANA")
 print(" 1. Pertambahan")
 print(" 2. Pengurangan")
