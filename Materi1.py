@@ -1,53 +1,53 @@
-awal = int(input("Masukkan nilai awal : "))
-akhir = int(input("Masukkan nilai awal : "))
-
-print(awal)
-print(akhir)
+from kalkulator import *
 
 
-def tambah(a, b):
-    return a + b 
+x = True
 
-def pengurangan(a,b) :
-    return a - b
+while x == True :
 
-def perkalian(a,b) :
-    return a * b
+    awal = int(input("Masukkan nilai awal : "))
+    akhir = int(input("Masukkan nilai awal : "))
 
-def pembagian(a,b) :
-    return a / b
-
-
-print("===================================================")
-print("||        MENU UNTUK KALKULATOR SEDERHANA        ||")
-print("===================================================")
-print("||   1 . Penjumlahan                             ||")
-print("||   2 . Pengurangan                             ||")
-print("||   3 . Perkalian                               ||")
-print("||   4 . Pembagian                               ||")
-print("===================================================")
-pilihan = int(input("Masukkan Pilihan\n=> "))
-
-if pilihan == 1 :
-    print(tambah(awal, akhir))
+    print("===================================================")
+    print("||        MENU UNTUK KALKULATOR SEDERHANA        ||")
+    print("===================================================")
+    print("||   1 . Penjumlahan                             ||")
+    print("||   2 . Pengurangan                             ||")
+    print("||   3 . Perkalian                               ||")
+    print("||   4 . Pembagian                               ||")
+    print("===================================================")
+    pilihan = int(input("Masukkan Pilihan\n=> "))
     
-elif pilihan == 2 :
-    print(pengurangan(awal, akhir))
+    if pilihan == 1 :
+        print(tambah(awal, akhir))
+        
+    elif pilihan == 2 :
+        print(pengurangan(awal, akhir))
+        
     
+    elif pilihan == 3 :
+        print(perkalian(awal, akhir))
+    
+    elif pilihan == 4 :
+    
+        # if akhir == 0 : 
+        #     print("Tidak bisa dibagi 0")
+        # else :
+        #     print(pembagian(awal, akhir))
+    
+        try :
+            print(pembagian(awal, akhir))
+        except :
+            print("tidak bisa dibagi 0")
 
-elif pilihan == 3 :
-    print(perkalian(awal, akhir))
 
-elif pilihan == 4 :
+    opsi2 = str(input("Lagi????(y/n)\n=> "))
 
-    if akhir == 0 : 
-        print("Tidak bisa dibagi 0")
-    else :
-        print(pembagian(awal, akhir))
-
-    # try :
-    #     print(pembagian(awal, akhir))
-    # except :
-    #     print("tidak bisa dibagi 0")
+    if opsi2 is not "y" :
+        x = False
 
 
+
+    
+    
+    
