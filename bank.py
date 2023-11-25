@@ -65,7 +65,8 @@ def transfer():
                 else:
                     print("PIN salah!")
                     print()
-        break
+                break
+            break
 
 def tarik_tunai():
     print("==== TARIK TUNAI ====")
@@ -73,36 +74,41 @@ def tarik_tunai():
 
     global saldo
 
-    nominal_tarik = int(input("Nominal Uang   : Rp "))
-    
-    if saldo <= 0 or saldo < nominal_tarik:
-        print()
-        print("Saldo Anda tidak mencukupi.")
-        print()
-        menu_utama()
-    elif nominal_tarik % 50000 == 0:
-        print("Tarik tunai hanya bisa kelipatan Rp 50000")
-    else:
-        while True:
-            pin_transfer = int(input("PIN            : "))
+    while True:
+        nominal_tarik = int(input("Nominal Uang   : Rp "))
+        
+        if saldo <= 0 or saldo < nominal_tarik:
             print()
+            print("Saldo Anda tidak mencukupi.")
+            print()
+            menu_utama()
+        elif nominal_tarik % 50000 != 0:
+            print()
+            print("Tarik tunai hanya bisa untuk nominal kelipatan Rp 50000")
+            print()
+        else:
+            while True:
+                pin_transfer = int(input("PIN            : "))
+                print()
 
-            if pin_transfer == pin:
-                print("Penarikan uang sejumlah", nominal_tarik, "telah berhasil!")
-                print()
-                saldo = saldo - nominal_tarik
-                print("Sisa Saldo Anda :", saldo)
-                print()
-                confirm = input("Apakah Anda ingin melakukan transaksi lagi? (y/n) : ")
-                print()
-                if confirm == "y":
-                    menu_utama()
-                elif confirm == "n":
-                    print("Terima kasih sudah menggunakan layanan kami.")
+                if pin_transfer == pin:
+                    print("Penarikan uang sejumlah", nominal_tarik, "telah berhasil!")
+                    print()
+                    saldo = saldo - nominal_tarik
+                    print("Sisa Saldo Anda :", saldo)
+                    print()
+                    confirm = input("Apakah Anda ingin melakukan transaksi lagi? (y/n) : ")
+                    print()
+                    if confirm == "y":
+                        menu_utama()
+                    elif confirm == "n":
+                        print("Terima kasih sudah menggunakan layanan kami.")
+                    break
+                else:
+                    print("PIN salah!")
+                    print()
                 break
-            else:
-                print("PIN salah!")
-                print()
+            break
 
 def setor_tunai():
     print("===== SETOR TUNAI =====")
@@ -132,6 +138,7 @@ def setor_tunai():
         else:
             print("PIN salah!")
             print()
+        break
 
 def menu_utama():
 
@@ -183,7 +190,7 @@ def login():
 
         if input_username == username and input_password == password:
             print()
-            print("Anda berhasil masuk")
+            print("Anda berhasil masuk!")
             print()
             menu_utama()
             break
