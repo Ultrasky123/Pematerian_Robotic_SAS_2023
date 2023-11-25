@@ -1,5 +1,6 @@
 from login import *
 from dataBase import *
+from bankMenu import menuBank
 
 
 def inputLogin(x, y, kesempatan):
@@ -11,6 +12,8 @@ def inputLogin(x, y, kesempatan):
         y = login(uname, pasw)
 
         if y == True :
+
+            menuBank()
             main()
             break
         else :
