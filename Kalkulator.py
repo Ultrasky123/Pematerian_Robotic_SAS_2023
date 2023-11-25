@@ -1,4 +1,4 @@
-import Kalkulator
+import CalFunc
 
 awal = int(input("Masukkan nilai awal = "))
 akhir = int(input("Masukkan nilai akhir = "))
@@ -14,17 +14,16 @@ print(" 4. Pembagian")
 pilihan = int(input("Enter Pilihan : "))
 
 if pilihan == 1:
-    print(awal, " + ", akhir, " = ", tambah(awal, akhir))
+    print(awal, " + ", akhir, " = ", CalFunc.tambah(awal, akhir))
 elif pilihan == 2:
-    print(awal, " - ", akhir, " = ", kurang(awal, akhir))
+    print(awal, " - ", akhir, " = ", CalFunc.kurang(awal, akhir))
 elif pilihan == 3:
-    print(awal, " * ", akhir, " = ", kali(awal, akhir))
+    print(awal, " * ", akhir, " = ", CalFunc.kali(awal, akhir))
 elif pilihan == 4:
     if akhir == 0:
         print("Tidak bisa dibagi 0")
     else:
-        print(awal, " / ", akhir, " = ", bagi(awal, akhir))
-
+        print(awal, " / ", akhir, " = ", CalFunc.bagi(awal, akhir))
 else:
     print("Invalid Input")
 
