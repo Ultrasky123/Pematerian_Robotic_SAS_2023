@@ -31,7 +31,7 @@ while True:
         print ("pilihan tidak valid")
 
     hitunglagi = input("Apakah Anda Ingin Menggunakan Kalkulator lagi (y/n)?")
-    if hitunglagi.lower() == 'n':
+    if hitunglagi.lower() != 'y':
         print ("Program Selesai")
         break
     
