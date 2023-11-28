@@ -51,7 +51,7 @@ def login(uname, pasw) :
 
         #     return False
 
-def loginPin(pin) : 
+def loginPin(pin, uname) : 
 
         # try :
 
@@ -70,19 +70,18 @@ def loginPin(pin) :
         n = len(pinDataBase)
         i = 0
         ketemu = False
-
-        while(i <= n-i) and (pin is not pinDataBase[i]) :
-        
-            if pin == pinDataBase[i] :
-                ketemu = True
-            i= i+1
-
-        if ketemu == True :
+        for i in range(n) :
+            if pin == pinDataBase[i] and pin == pinDataBase[username1.index(uname)]:
+                  ketemu = True
+                  break
+            else :
+                 ketemu = False
+        if ketemu ==  True:
           return True
         else :
           return False
         
-def CariNoRek(i, noRekening) :
+def CariNoRek(noRekening, uname) :
     n = len(noRekDataBase)
     i = 0 
     ketemu = False
@@ -90,11 +89,10 @@ def CariNoRek(i, noRekening) :
         
         if noRekening == noRekDataBase[i] :
             ketemu = True
-            print("Index Pencarian No Rek", i)
         i = i + 1
     
     if ketemu == True :
-        print("Cek Index Penerima di Modul Login " , i)
+        
         return True
     else :
         return False

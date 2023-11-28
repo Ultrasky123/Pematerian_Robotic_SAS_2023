@@ -32,27 +32,36 @@ def menuBank(saldoNow, uname) :
         menuBank(saldoNow, uname)
     elif x == 2 :
 
-        kesempatan = 2
+        n = 0
+        kesempatan = 2 
+
         for n in range(3) :
-            pinLogin=int(input("MASUKKAN PIN YANG TERDIRI DARI 4 DIGIT\n=> "))
-            cek = loginPin(pinLogin)
-            if cek == True : 
+        
+            pin = int(input("PIN : "))
+
+            cek = loginPin(pin, uname)
+
+            if cek == True :
                 tarikTunai(saldoNow, uname)
                 menuBank(saldoNow, uname)
-                n=4
-            elif kesempatan == 0 :                                                       
-                print("===================================================")
-                print("||          KESEMPATAN ANDA SUDAH HABIS          ||")
-                print("===================================================")
+                break
+            elif kesempatan == 0 :
+                print("==========================================")
+                print("||        KESEMPATAN SUDAH HABIS        ||")
+                print("==========================================")
+                menuBank(saldoNow, uname)
+                    
             
-                
-
             else :
-                print("Pin yang anda masukkan salah!!!!!!! Kesempatan tinggal", kesempatan)
+                    print("============================================")
+                    print("||      PIN YANG ANDA MASUKKAN SALAH      ||")
+                    print("============================================")
+                    print("         Kesempatan tinggal", kesempatan, "kali")
+                
+                
+                    
+                    kesempatan = kesempatan - 1
             
-            kesempatan = kesempatan - 1
-
-
     elif x == 3 :
         bankName = str(input("Masukkan Nama Bank\n=> "))
         noRekening = int(input("Masukkan No. Rekeneing Tujuan (8 Digit)\n=>"))
@@ -64,10 +73,8 @@ def menuBank(saldoNow, uname) :
             
     #         i = i + 1
 
-        cek = CariNoRek(i, noRekening)
+        cek = CariNoRek(noRekening, uname)
         indexPengirim = username1.index(uname)
-
-        print("Nilai I : ", i)
 
         # print("Cek Index penerima ", noRekDataBase.index(noRekening))
         # print("Cek Index Pengirim",saldoNow)
@@ -90,15 +97,7 @@ def menuBank(saldoNow, uname) :
             print("NO REKENING TIDAK DITEMUKAN!!!!!!!!!!")
             menuBank(saldoNow, uname)
 
-            
-
-
-
         
-
-        
-
-
         # cekNoRek = noRekDataBase.index(noRekening)
 
         # if noRekening == noRekDataBase[cekNoRek] :
@@ -154,7 +153,8 @@ def tarikTunai(saldoNow, uname) :
              print("==================================================")
              print("||          SALDO ANDA TIDAK MENCUKUPI          ||")
              print("==================================================")
-             menuBank(saldoNow, uname)
+             input("Tekan sembarang tombol untuk lanjut..............")
+            
         else :
              saldo[saldoNow] = saldo[saldoNow]-tarik
 

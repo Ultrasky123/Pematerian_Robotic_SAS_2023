@@ -24,7 +24,11 @@ def inputLogin(x, y, kesempatan):
             main()
             break
         elif kesempatan == 0 :
-            print("Kesempatan anda sudah habis")
+            print("==========================================")
+            print("||        KESEMPATAN SUDAH HABIS        ||")
+            print("==========================================")
+
+            input("Tekan sembarang tombol untuk lanjut..............")
             main()
         else :
 
@@ -33,7 +37,8 @@ def inputLogin(x, y, kesempatan):
             print("=============================================")
             
                 
-            kesempatan= kesempatan -1
+            kesempatan = kesempatan -1
+            
 
 def main():
     print("==============================================")
