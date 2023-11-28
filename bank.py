@@ -9,6 +9,7 @@ username = "Must"
 password = 123
 i = 0
 print("---Selamat Datang Di Bank Tanpa Minimal Apapun---")
+breaker = False
 while True:
     input_username = input("Masukkan Username: ")
     input_password = int(input("Masukkan Password: "))
