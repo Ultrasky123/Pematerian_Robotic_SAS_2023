@@ -1,6 +1,7 @@
 # from bangMain import *
 from dataBase import *
 from login import *
+import time
 
 def menuBank(saldoNow, uname) :
 
@@ -36,38 +37,85 @@ def menuBank(saldoNow, uname) :
             pinLogin=int(input("MASUKKAN PIN YANG TERDIRI DARI 4 DIGIT\n=> "))
             cek = loginPin(pinLogin)
             if cek == True : 
-                 tarikTunai(saldoNow, uname)
+                tarikTunai(saldoNow, uname)
+                menuBank(saldoNow, uname)
+                n=4
+            elif kesempatan == 0 :                                                       
+                print("===================================================")
+                print("||          KESEMPATAN ANDA SUDAH HABIS          ||")
+                print("===================================================")
+            
+                
 
             else :
                 print("Pin yang anda masukkan salah!!!!!!! Kesempatan tinggal", kesempatan)
-                if kesempatan == 0 :
-                    print("===================================================")
-                    print("||          KESEMPATAN ANDA SUDAH HABIS          ||")
-                    print("===================================================")
-                
-                kesempatan = kesempatan - 1
+            
+            kesempatan = kesempatan - 1
+
 
     elif x == 3 :
         bankName = str(input("Masukkan Nama Bank\n=> "))
         noRekening = int(input("Masukkan No. Rekeneing Tujuan (8 Digit)\n=>"))
 
-        cekNoRek = noRekDataBase.index(noRekening)
+        i = 0
+        
+    # ### MENCARI INDEX PENERIMA
+    #     while i < len(noRekDataBase) and noRekening is not noRekDataBase[i] :
+            
+    #         i = i + 1
 
-        if noRekening == noRekDataBase[cekNoRek] :
+        cek = CariNoRek(i, noRekening)
+        indexPengirim = username1.index(uname)
 
-            print("SILAHKAN TRANSFER :)")
-             
+        print("Nilai I : ", i)
+
+        # print("Cek Index penerima ", noRekDataBase.index(noRekening))
+        # print("Cek Index Pengirim",saldoNow)
+
+        if cek == True :
+            print("==================================================")
+            print("||             SILAHKAN TRANSFER :)             ||")
+            print("==================================================")
+         
             nominal = int(input("Nominal Transfer\n=>"))
-
             if nominal > saldo[saldoNow] : 
                 print("Saldo anda tidak mencukupi untuk melakukan transfer")
-
             else : 
+                saldo[noRekDataBase.index(noRekening)] = saldo[noRekDataBase.index(noRekening)] + nominal
+                saldo[indexPengirim] = saldo[indexPengirim] - nominal
 
-                saldo[cekNoRek]= saldo[cekNoRek] + nominal
-                saldo[saldoNow] = saldo[saldoNow] - nominal
+            menuBank(saldoNow, uname)
+
         else :
             print("NO REKENING TIDAK DITEMUKAN!!!!!!!!!!")
+            menuBank(saldoNow, uname)
+
+            
+
+
+
+        
+
+        
+
+
+        # cekNoRek = noRekDataBase.index(noRekening)
+
+        # if noRekening == noRekDataBase[cekNoRek] :
+
+        #     print("SILAHKAN TRANSFER :)")
+             
+        #     nominal = int(input("Nominal Transfer\n=>"))
+
+        #     if nominal > saldo[saldoNow] : 
+        #         print("Saldo anda tidak mencukupi untuk melakukan transfer")
+
+        #     else : 
+
+        #         saldo[cekNoRek]= saldo[cekNoRek] + nominal
+        #         saldo[saldoNow] = saldo[saldoNow] - nominal
+        # else :
+        #     print("NO REKENING TIDAK DITEMUKAN!!!!!!!!!!")
 
     elif x == 4 :
         print("=============================================")
@@ -77,15 +125,18 @@ def menuBank(saldoNow, uname) :
         print("PIN ANDA\t: ", pinDataBase[saldoNow])
         print("NO REKENING\t: ", noRekDataBase[saldoNow])
 
+        input("\n\nTEKAN ENTER UNTUK LANJUT...........................")
+        menuBank(saldoNow, uname)
 
+    elif x ==  0:
 
-
-    # elif x ==  0:
-
-    #     main()
+        print("ANDA KELUAR DALAM WAKTU 1 DETIK")
+        time.sleep(1)
         
     else :
         print("Pilihan Tidak Ada")
+    
+        menuBank(saldoNow, uname)
 
 def isiSaldo(saldoNow) :
     print("Saldo : ", saldo[saldoNow])

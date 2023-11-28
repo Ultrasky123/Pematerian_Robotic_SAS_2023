@@ -15,7 +15,7 @@ def inputLogin(x, y, kesempatan):
         uname = str(input("Masukkan Username : "))
         pasw = str(input("Masukkan Password : "))
 
-        print(username1.index(uname))
+        # print(username1.index(uname))
         y = login(uname, pasw)
 
         if y == True :
@@ -23,14 +23,16 @@ def inputLogin(x, y, kesempatan):
             menuBank(index, uname)
             main()
             break
+        elif kesempatan == 0 :
+            print("Kesempatan anda sudah habis")
+            main()
         else :
 
             print("=============================================")
             print("-          Kesempatan anda tinggal", kesempatan, "       -")
             print("=============================================")
-            if kesempatan == 0 :
-                print("Kesempatan anda sudah habis")
-                main()
+            
+                
             kesempatan= kesempatan -1
 
 def main():
