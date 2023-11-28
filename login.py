@@ -26,3 +26,20 @@ def login(uname, pasw) :
         #         print("Password dan Username salah!!!!!")
 
         #     return False
+
+def loginPin(pin) : 
+
+        try :
+
+            x = pin.index(pin)
+            
+
+        except :
+            print("Pin salah!!!!!!!!")
+
+            return False
+
+
+        if pin == pinDataBase[x]:
+            return True
+
