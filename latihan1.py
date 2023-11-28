@@ -33,15 +33,17 @@ if pilihan == 1:
 if pilihan == 2:
     print (kurang(akhir, awal))
 
-if pilihan == 3:
+elif pilihan == 3:
     print (perkalian(akhir, awal))
 
-if pilihan == 4:
+elif pilihan == 4:
     
     if akhir == 0:
         print ("angka tidak bisa dibagi")
     else:
         print (bagi(akhir, awal))
+else:
+    print ("pilihan tidak valid")
 
     
 
