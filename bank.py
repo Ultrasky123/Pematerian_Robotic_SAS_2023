@@ -67,7 +67,3 @@ while True:
                     break
     if breaker:
         break
-
-        
-
-
