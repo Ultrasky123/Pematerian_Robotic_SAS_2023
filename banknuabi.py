@@ -9,7 +9,6 @@ def login():
     if login_choice.lower() == 'n' or 'N':
         print("Program Selesai")
         return False
-    return True
 
 # Username dan Password
 print("Bank Sederhana\n")
@@ -70,5 +69,13 @@ while True:
                 login()
 
             # Exit
-            elif choice == 4:
+            elif choice == 0:
+                exit()
+            
+            else:
+                print("Pilihan transaksi tidak ada!")
+                breaker = True
                 break
+
+    if breaker:
+        break
