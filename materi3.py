@@ -9,15 +9,37 @@ def main ():
 #         print('')
 
 # while
+    # size = int(input())
+    # i = 1
+    # while i <= size:
+    #     j= size
+    #     while j >= i:
+    #         print('*', end='')
+    #         j-=1
+    #     print('')
+    #     i+= 1
+
+# latihan
     size = int(input())
-    i = 1
+
+    # for i in range(0,size+1) :
+    #     print('  *  ')
+    #     for i in range (0,size+1):
+    #         print
+    
+    i=1
     while i <= size:
-        j= size
-        while j >= i:
-            print('*', end='')
-            j-=1
-        print('')
-        i+= 1
+        print("   *   ")
+        i+=1
+        while i <= size-1:
+            print("  * *  ")
+            i+=1
+            while i <= size-2:
+                print(" *   * ")
+                i += 1
+                while i <= size-3:
+                    print("*     *")
+                    i+=1
 
 if __name__ == '__main__':
     main()
