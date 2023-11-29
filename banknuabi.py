@@ -1,23 +1,30 @@
+# Panggil library 'os'
 import os
 
+# Keputusan Pengulangan
 def login():
+    os.system('clear')
+    print("Transaksi berhasil!")
     login_choice = input("Apakah anda ingin melanjutkan program (y/n)? ")
     if login_choice.lower() == 'n' or 'N':
         print("Program Selesai")
         return False
     return True
 
+# Username dan Password
 print("Bank Sederhana\n")
 username = "admin"
 password = "admin"
 attempt_count = 0
 max_attempts = 3
 
+# Menu login
 while True:
     print("Masukan Username dan Password")
     input_username = input("Username: ")
     input_password = (input("Password: "))
 
+    # Pengulangan Username dan Password
     if username != input_username or password != input_password:
         print("Username atau Password salah!")
         attempt_count += 1
@@ -28,8 +35,10 @@ while True:
             break
     else:
 
+        # Total Saldo Pada Bank
         total_saldo = 100000
 
+        # Perulangan Menu Transaksi Bank
         while True:
             os.system('clear')
             print("Total saldo pada akun:")
@@ -41,24 +50,25 @@ while True:
             print("0. Keluar")
             choice = int(input("Masukkan pilihan transaksi: "))
 
+            # Transfer logic goes here
             if choice == 1:
-                # Transfer logic goes here
                 transfer = int(input("Masukan nominal: Rp "))
                 total_saldo -= transfer
-                if not login():
-                    break
+                login()
 
+            # Tarik Tunai logic goes here
             elif choice == 2:
-                # Tarik Tunai logic goes here
-                if not login():
                     tariktunai = int(input("Masukan nominal: Rp "))
                     total_saldo -= tariktunai
-                    break
+                    login()
 
+            # Setor Tunai logic goes here
             elif choice == 3:
-                # Setor Tunai logic goes here
                 setortunai = int(input("Masukkan nominal: Rp "))
                 total_saldo += setortunai
                 print("Total saldo anda sekarang Rp ", total_saldo)
-                if not login():
-                    break
+                login()
+
+            # Exit
+            elif choice == 4:
+                break
