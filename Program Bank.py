@@ -3,7 +3,7 @@ import os
 # Informasi saldo
 uang_user = 10000
 
-# Fungsi Kembali Menu
+# Main menu
 def main_menu():
     os.system('clear')
     global c  # Menandakan bahwa 'c' adalah variabel global
