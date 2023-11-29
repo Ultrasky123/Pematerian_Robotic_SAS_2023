@@ -33,4 +33,3 @@ while True:
     if kelanjutan.lower() =='n':
         print("Program selesai")
         break
-    
