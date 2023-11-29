@@ -1,28 +1,39 @@
 import os
 
 # Informasi saldo
-uang_user = 100000
+uang_user = 10000
 
 # Fungsi Kembali Menu
-def kembali_menu():
-    global c  # Menandakan bahwa 'c' adalah variabel global
-    input("Tekan Enter untuk kembali ke Main Menu...")
+def main_menu():
     os.system('clear')
+    global c  # Menandakan bahwa 'c' adalah variabel global
     print("====== PROGRAM BANK ======")
-    print(" 1. Cek Saldo")
-    print(" 2. Transfer")
-    print(" 3. Nabung")
-    print(" 4. Tarik")
+    print("Saldo Anda : Rp. ", uang_user)
+    print(" 1. Transfer")
+    print(" 2. Nabung")
+    print(" 3. Tarik")
     print(" 0. Exit")
     c = input("Enter Pilihan : ")
 
-# Cek Saldo menu
-def cek_saldo():
-    global uang_user  # Menandakan bahwa 'uang_user' adalah variabel global
-    os.system('clear')
-    print("====== MENU CEK SALDO ======")
-    print(f"Saldo Anda saat ini: {uang_user}")
-    kembali_menu()
+    # Transfer menu
+    if c == '1':
+        os.system('clear')
+        transfer_menu()
+
+    # Nabung menu
+    elif c == '2':
+        os.system('clear')
+        nabung_menu()
+
+    # Tarik saldo
+    elif c == '3':
+        os.system('clear')
+        tarik_menu()
+
+    # Exit
+    elif c == '0':
+        print("Program dimatikan. Terima kasih telah menggunakan!")
+        exit()
 
 # Narik menu
 def tarik_menu():
@@ -32,7 +43,8 @@ def tarik_menu():
     tarik_saldo = int(input("Masukkan Saldo Yang Ditarik : "))
     uang_user -= tarik_saldo
     print("Tarik Berhasil !")
-    kembali_menu()
+    input("Tekan Enter untuk kembali ke Main Menu...")
+    main_menu()
 
 
 # Nabung menu
@@ -43,7 +55,8 @@ def nabung_menu():
     tambahan_nabung = int(input("Masukkan Uang Anda : "))
     uang_user += tambahan_nabung
     print("Nabung Berhasil !")
-    kembali_menu()
+    input("Tekan Enter untuk kembali ke Main Menu...")
+    main_menu()
 
 # Transfer menu
 def transfer_menu():
@@ -54,7 +67,8 @@ def transfer_menu():
     transfer_nabung = int(input("Masukkan Jumlah Transfer : "))
     uang_user -= transfer_nabung
     print("Transfer Berhasil !")
-    kembali_menu()
+    input("Tekan Enter untuk kembali ke Main Menu...")
+    main_menu()
 
 
 # Login menu
@@ -70,41 +84,6 @@ def login():
 
         if username == username_benar and password == password_benar:
             os.system('clear')
-            print("Berhasil Login!\n")
-            print("====== PROGRAM BANK ======")
-            print(" 1. Cek saldo")
-            print(" 2. Transfer")
-            print(" 3. Nabung")
-            print(" 4. Tarik")
-            print(" 0. Exit")
-            c = input("Enter Pilihan : ")
-
-            # Cek saldo
-            if c == '1':
-                os.system('clear')
-                cek_saldo()
-                kembali_menu()
-
-            # Transfer menu
-            elif c == '2':
-                os.system('clear')
-                transfer_menu()
-
-            # Nabung menu
-            elif c == '3':
-                os.system('clear')
-                nabung_menu()
-
-            # Tarik saldo
-            elif c == '4':
-                os.system('clear')
-                tarik_menu()
-
-            # Exit
-            elif c == '0':
-                print("Program dimatikan. Terima kasih telah menggunakan!")
-                exit()
-
 
             break  # Keluar dari loop setelah login berhasil
 
@@ -116,7 +95,7 @@ def login():
         print("Login gagal terus-menerus. Program dihentikan")
         exit()
 
-# Main menu
+# Menu awal
 print("====== PROGRAM BANK ======")
 print(" 1. Login")
 print(" 0. Exit")
@@ -125,6 +104,7 @@ c = input("Enter Pilihan : ")
 if c == '1':
     os.system('clear')  # Membersihkan screen terminal
     login()
+    main_menu()
 elif c == '0':
     print("Program dimatikan. Terima kasih telah menggunakan!")
     exit()
