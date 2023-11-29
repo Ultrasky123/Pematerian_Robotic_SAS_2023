@@ -9,7 +9,7 @@ while attempts < max_attempts:
     input_username = input("Masukkan Username: ")
     input_pin = int(input("Masukkan PIN Anda: "))
 
-    if input_pin == pin & username:
+    if input_pin == pin & input_username == username:
         print("Selamat datang!")
         break
     else:
