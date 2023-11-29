@@ -1,7 +1,11 @@
+#Memanggil 'fungsilatihannuaing.py'
 import fungsilatihannuaing
 
+#Pengulangan
 while True:
     print("Kalkulator Sederhana")
+    
+    #Memasukan Nilai
     awal = int(input("Masukan Nilai Awal = "))
     akhir = int(input("Masukan Nilai Akhir = "))
 
@@ -13,6 +17,7 @@ while True:
     print("3. pengkalian")
     print("4. pembagian")
 
+    #Memasukan Memilih Operasi
     pilihan = int(input("Input Operasi = "))
 
     if pilihan == 1:
@@ -22,6 +27,8 @@ while True:
     elif pilihan == 3:
         print ("Hasil dari Pengalian = " ,fungsilatihannuaing.pengkalian(awal,akhir))
     elif pilihan == 4:
+
+        #Pembagian  !=|0
         if akhir == 0:
             print("Tidak bisa dipembagian 0")
         else:
@@ -29,6 +36,7 @@ while True:
     else:
         print ("Masukan pilihan operasi yang benar")
 
+    #Keputusan Pengulangan
     kelanjutan = input("Apakah anda ingin menlanjutkan program? (y/n)")
     if kelanjutan.lower() =='n':
         print("Program selesai")
