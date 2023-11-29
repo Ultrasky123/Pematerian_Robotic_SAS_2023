@@ -38,6 +38,6 @@ while True:
 
     #Keputusan Pengulangan
     kelanjutan = input("Apakah anda ingin menlanjutkan program? (y/n)")
-    if kelanjutan.lower() =='n':
+    if kelanjutan.lower() == 'n' or 'N':
         print("Program selesai")
         break
