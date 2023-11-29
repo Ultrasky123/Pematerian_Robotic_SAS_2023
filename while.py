@@ -8,9 +8,13 @@ def main():
     # Selama kondisi while i < size+1 TRUE
     while i <= size:
         j = size
-        while j > i:
-            print("*", end="")
-            j -= 1
+        while j < i:
+            print(" ", end="")
+            j += 1
+        j = 0
+        while j < i:
+            print("* ", end="")
+            j += 1
         print("")
         i+=1
     
