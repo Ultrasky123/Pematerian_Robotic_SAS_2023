@@ -43,6 +43,7 @@ def mainmenu():
             withdraw()
         elif op == '3':
             print("Transfer")
+            transfer()
         elif op == '4':
             print("Balance")
             balance()
