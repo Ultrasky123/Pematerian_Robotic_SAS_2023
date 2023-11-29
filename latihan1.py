@@ -1,25 +1,8 @@
+import kalkulator
+
 #aritmatika dasar
 awal = int(input ("masukan nilai awal = "))
 akhir = int(input("masukan nilai akhir= "))
-
-#print(awal)
-#print(akhir)
-
-def tambah (a,b):
-    return a+b
-#print(tambah (awal,akhir))
-
-def perkalian (a,b):
-    return a*b
-#print(perkalian(awal,akhir))
-
-def pengurangan(a,b):
-    return a-b
-#print(pengurangan(awal,akhir))
-
-def pembagian(a,b):
-    return a/b
-#print(pembagian(awal,akhir))
 
 print("program kalkulator sederhana")
 print ("1.Penjumlahan")

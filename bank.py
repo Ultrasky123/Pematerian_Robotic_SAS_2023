@@ -1,3 +1,10 @@
+import datetime
+
+x = datetime.datetime.now()
+print(x.strftime("%x"))  #print tanggal
+print(x.strftime("%X"))  #print waktu
+print(x) #lengkap
+
 data_account:[{
     "name":"kalila",
     "date":"1/10/2022",
@@ -30,7 +37,6 @@ def saving():
 
 # user dan PIN
 user_PIN = [("kalila",234),("airin",345)]
-
 
 # Login 
 error_login_counter = 0
