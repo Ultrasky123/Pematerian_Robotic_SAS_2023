@@ -1,6 +1,6 @@
 # for
 
-# def main ():
+def main ():
 #     size = int(input())
 
 #     for i in range(0,size+1) :
@@ -8,12 +8,7 @@
 #             print('*', end='')
 #         print('')
 
-# if __name__ == '__main__':
-#     main()
-
 # while
-
-def main ():
     size = int(input())
     i = 1
     while i <= size:
