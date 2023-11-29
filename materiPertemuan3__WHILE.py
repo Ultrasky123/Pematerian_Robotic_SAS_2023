@@ -3,17 +3,17 @@ def main():
     size = int(input("Size : "))
     while i < size:
         j = 0
-        k = size
-        while k > i:
-            print("*", end='')
-            k-=1
+        k = i
+        while k < size-1:
+            print(" ", end='')
+            k+=2
 
         while j < i :
-            print(j, end = '')
+            print("-", end = '')
             j=j+1
 
         print('')
-        i+=1
+        i+=2
 
 
 
