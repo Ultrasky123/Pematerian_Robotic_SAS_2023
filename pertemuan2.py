@@ -1,18 +1,29 @@
+
 def main():
     size = int(input())
-    i = 0
-
     
-    #untuk setiap i sebanyak size
-    #selama kondisi i < size adalah TRUE
-    while i <= size :
-        j = size
-        while j >= i:
-            print('*',end='')
-            j -= 1
-        #break line 
-        print ('')
-        i += 1
+    for i in range(0,size +1):
+        for j in range(0,size - i + 1):
+            print(' ', end='')
+        for j in range(0, 2 * i):
+            if j == 1 or j == 2 * i - 1:
+                print('*', end='')
+            else:
+                print(' ', end='')
+        
+        print('')
+    
+    for i in range(size - 1, 0, -1):
+        for j in range(0, size - i + 1):
+            print (' ', end='')
+        for j in range(0, 2 * i):
+            if j == 1 or j == 2 * i - 1:
+                print('*', end='')
+            else:
+                print(' ', end='')
+        print()
+            
+
 
 
 # untuk memastikan bahwa naem dari program ini adalah __main__
