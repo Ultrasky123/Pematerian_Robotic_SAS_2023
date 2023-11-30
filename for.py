@@ -14,9 +14,12 @@ def main():
     for i in range (0, size+1):
         for j in range(size+1, i, -1):
             print(' ', end='')
-        print('*') # untuk meng-enter
-        for j in range(1, size+1):
+        print('*', end='')
+        for j in range(0, i):
             print('a', end='')
+        for j in range(1, i):
+            print('a', end='')    
+        print('*')
 
 # Untuk memastikan bahwa name dari program ini adalah __main__
 if __name__ == '__main__':

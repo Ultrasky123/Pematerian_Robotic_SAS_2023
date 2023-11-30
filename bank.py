@@ -1,7 +1,9 @@
 # loop, masukin username password salah 3 kali, pilihan tarik tunai, transfer, nabung, 
+import os
 def isLanjut():
         isLanjut = input("Apakah anda ingin melanjutkan program (y/n)? ")
         if isLanjut.lower() != 'y':
+            os.system('clear')
             print("Program Selesai")
             return False
 
@@ -11,6 +13,7 @@ i = 0
 print("---Selamat Datang Di Bank Tanpa Minimal Apapun---")
 breaker = False
 while True:
+    os.system('clear')
     input_username = input("Masukkan Username: ")
     input_password = int(input("Masukkan Password: "))
     if username != input_username or password != input_password:
@@ -23,6 +26,7 @@ while True:
     else:
         totalSaldo = 0
         while True:
+            os.system('clear')
             print("Masuk ke Menu")
             print("1. Menabung")
             print("2. Transfer")
@@ -30,6 +34,7 @@ while True:
             print("4. Cek Saldo")
             pilihan = int(input("Masukkan pilihan anda: "))
             if pilihan == 1:
+                os.system('clear')
                 nabung = int(input("Masukkan uang yang anda ingin tabung: Rp"))
                 totalSaldo += nabung
                 print("Total saldo anda sekarang Rp", totalSaldo)
@@ -37,6 +42,7 @@ while True:
                     breaker = True
                     break
             elif pilihan == 2:
+                os.system('clear')
                 bankTujuan = input("Masukkan bank tujuan: ")
                 noRekening = int(input("Masukkan no rekening: "))
                 transfer = int(input("Masukkan jumlah transfer: Rp"))
@@ -50,6 +56,7 @@ while True:
                     breaker = True
                     break
             elif pilihan == 3:
+                os.system('clear')
                 tarikTunai = int(input("Masukkan uang yang ingin ditarik: Rp"))
                 if totalSaldo >= tarikTunai:
                     totalSaldo -= tarikTunai
@@ -61,6 +68,7 @@ while True:
                     breaker = True
                     break
             elif pilihan == 4:
+                os.system('clear')
                 print("Total saldo anda Rp", totalSaldo)
                 if isLanjut() == False:
                     breaker = True
