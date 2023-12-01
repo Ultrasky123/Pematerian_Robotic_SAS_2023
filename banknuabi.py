@@ -6,7 +6,7 @@ def login():
     os.system('clear')
     print("Transaksi berhasil!")
     login_choice = input("Apakah anda ingin melanjutkan program (y/n)? ")
-    if login_choice.lower() == 'n' or 'N':
+    if login_choice.lower() != 'y' or 'Y':
         print("Program Selesai")
         return False
 
@@ -25,9 +25,9 @@ while True:
 
     # Pengulangan Username dan Password
     if username != input_username or password != input_password:
+        os.system('clear')
         print("Username atau Password salah!")
         attempt_count += 1
-        os.system('clear')
         print("Sisa Percobaan ", attempt_count, "/", max_attempts)
         if attempt_count == max_attempts:
             print("Anda telah melebihi percobaan, silahkan coba lagi beberapa saat..")
@@ -76,6 +76,3 @@ while True:
                 print("Pilihan transaksi tidak ada!")
                 breaker = True
                 break
-
-    if breaker:
-        break
