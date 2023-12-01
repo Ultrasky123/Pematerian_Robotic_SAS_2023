@@ -6,9 +6,10 @@ def login():
     os.system('clear')
     print("Transaksi berhasil!")
     login_choice = input("Apakah anda ingin melanjutkan program (y/n)? ")
-    if login_choice.lower() != 'y' or 'Y':
+    if login_choice() == 'y' or 'Y':
         print("Program Selesai")
-        return False
+    elif login_choice() == 'n' or 'N':
+        exit()
 
 # Username dan Password
 print("Bank Sederhana\n")
@@ -70,6 +71,7 @@ while True:
 
             # Exit
             elif choice == 0:
+                print("Berhasil Exit")
                 exit()
             
             else:

@@ -70,13 +70,12 @@ def main(capture):
 
             x, y, w, h = cv2.boundingRect(largest_contour)
 
-            cv2.rectangle(frame, (x, y), (w+x , h+y), (0, 0, 255), 2)
+            cv2.putText(frame, 'Green', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2)
+            cv2.rectangle(frame, (x, y), (w+x , h+y), (0, 255, 0), 2)
 
         cv2.imshow('HSV', hsv)
         cv2.imshow('Thresh', thresh)
-        cv2.imshow('Frame', frame)
-
-        frame = cv2.flip(frame, 1)
+        cv2.imshow('Frame', frame)        
 
         cv2.imshow('Frame', frame)
 
