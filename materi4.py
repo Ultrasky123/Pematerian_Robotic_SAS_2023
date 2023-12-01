@@ -56,7 +56,7 @@ def main(capture):
             largest_contour =max(contours, key=cv2.contourArea)
             #  x & y = koordinat / w & h = ukuran
             x,y,w,h = cv2.boundingRect(largest_contour)
-            # tampilkan kotak
+            # tampilkan kotak 
             cv2.putText(frame,'BLUE',(x,y),cv2.FONT_HERSHEY_SIMPLEX,2,(255,0,0),2)
             cv2.rectangle(frame,(x,y),(w+x,h+y), (255,0,0),2)
 
