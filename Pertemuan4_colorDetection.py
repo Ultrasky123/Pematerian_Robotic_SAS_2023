@@ -37,9 +37,34 @@ def main(capture) :
         # print(capture.read())
         ret, frame = capture.read()
 
+
+
         lowerHSV = get_lower_hsv()
         upperHSV = get_upper_hsv()
 
+        # print(lowerHSV)
+        # print(upperHSV)
+
+        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+        thresh = cv2.inRange(hsv, lowerHSV, upperHSV)
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5))
+        thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
+        contour, _= cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        if contour :
+            largest_contours = max(contour, key=cv2.contourArea)
+
+
+        # x dan y adalah koordinat/w dan h adalah ukuran
+            x, y, w, h = cv2.boundingRect(largest_contours)
+
+            cv2.rectangle(frame, (x, y), (w + x, h + y), (0,0,255), 2)
+
+        print(x, y, w, h)
+
+        cv2.imshow('kernel', kernel)
+        cv2.imshow('thresh', thresh)
+        cv2.imshow('HSV', hsv)
         cv2.imshow('Frame', frame)
 
         if cv2.waitKey(1) & 0xFF == ord('q') :
