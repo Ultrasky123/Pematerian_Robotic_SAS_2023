@@ -1,8 +1,8 @@
-arr = input()
+arr = input("Masukkan Kata\n=> ")
 print(type(arr))
 ##Mengconvert string menjadi list
 Arr2 = list(arr)  
-print(type(Arr2))
+print("Tipe data setelah di convert ",type(Arr2))
 
 panjang = len(Arr2)
 n = int((panjang-1) / 2)
@@ -11,6 +11,7 @@ print(f"Jumlah huruf adalah {panjang} dan 'n' adalah jumlah perulangan {n}")
 x = panjang
 
 a = 0
+
 
 while a < panjang and n >= 0:
 
