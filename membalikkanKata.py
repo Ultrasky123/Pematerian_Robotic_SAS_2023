@@ -5,7 +5,7 @@ Arr2 = list(arr)
 print(type(Arr2))
 
 panjang = len(Arr2)
-n = int((panjang) / 2)
+n = int((panjang-1) / 2)
 print(f"Jumlah huruf adalah {panjang} dan 'n' adalah jumlah perulangan {n}")
 
 x = panjang
