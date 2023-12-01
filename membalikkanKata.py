@@ -15,7 +15,7 @@ a = 0
 
 while a < panjang and n >= 0:
 
-    print(f"Index ke-{a} ditukar dengan undex ke-{x - a-1}")
+    # print(f"Index ke-{a} ditukar dengan undex ke-{x - a-1}")
 
     temp = Arr2[panjang - 1 - a]
 
