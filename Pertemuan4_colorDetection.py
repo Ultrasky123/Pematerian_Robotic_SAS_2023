@@ -47,7 +47,8 @@ def main(capture) :
 
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
         thresh = cv2.inRange(hsv, lowerHSV, upperHSV)
-        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5))
+        
+        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
         thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
         contour, _= cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
@@ -58,7 +59,11 @@ def main(capture) :
         # x dan y adalah koordinat/w dan h adalah ukuran
             x, y, w, h = cv2.boundingRect(largest_contours)
 
-            cv2.rectangle(frame, (x, y), (w + x, h + y), (0,0,255), 2)
+            cv2.putText(frame, 'BLUE', (x, y+50), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 0, 0), 3)
+            cv2.putText(frame, 'RED', (x, y+50), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 3)
+
+            cv2.rectangle(frame, (x, y), (w + x, h + y), (255, 0,0), 2)
+            cv2.rectangle(frame, (x, y), (w + x, h + y), (0, 255,0), 2)
 
         print(x, y, w, h)
 
