@@ -57,7 +57,8 @@ def main(capture):
             #  x & y = koordinat / w & h = ukuran
             x,y,w,h = cv2.boundingRect(largest_contour)
             # tampilkan kotak
-            cv2.rectangle(frame,(x,y),(w+x,h+y), (0,0,255),2)
+            cv2.putText(frame,'BLUE',(x,y),cv2.FONT_HERSHEY_SIMPLEX,2,(255,0,0),2)
+            cv2.rectangle(frame,(x,y),(w+x,h+y), (255,0,0),2)
 
         # tampilkan frame
         cv2.imshow('Thresh',thresh)

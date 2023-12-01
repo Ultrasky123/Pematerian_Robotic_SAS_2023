@@ -33,7 +33,7 @@ if pilihan == 1:
                     print("TERIMA KASIH DAN JANGAN LUPA AMBIL KARTU ATM KEMBALI !!!")
                     flag = True
                     break
-                else :
+                else:
                     print("SILAHKAN MEMILIH PILIHAN YANG TERSEDIA") 
 
             if flag == True :
