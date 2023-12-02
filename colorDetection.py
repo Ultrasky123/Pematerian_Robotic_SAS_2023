@@ -5,7 +5,7 @@ def callback(_):
 def init_trackbars():
     # Hue Saturation Value
     # Bikin Windows
-    cv2.namedWindow('HSV Trackbars')
+    cv2.namedWindow('HSV Trackbars')    
     # Buat Trackbar
     cv2.createTrackbar('LH', 'HSV Trackbars', 0, 255, callback)
     cv2.createTrackbar('LS', 'HSV Trackbars', 0, 255, callback)
@@ -13,7 +13,6 @@ def init_trackbars():
     cv2.createTrackbar('UH', 'HSV Trackbars', 255, 255, callback)
     cv2.createTrackbar('US', 'HSV Trackbars', 255, 255, callback)
     cv2.createTrackbar('UV', 'HSV Trackbars', 255, 255, callback)
-
 
 def get_lower_hsv():
     lower_hue = cv2.getTrackbarPos('LH', 'HSV Trackbars')
@@ -59,15 +58,16 @@ def main(capture):
         if contours:
             # Get kontur dengan ukuran terbesar
             largest_contour = max(contours, key=cv2.contourArea)
+     
             # x dan y adalah koordinat, w & h adalah ukuran
             x, y, w, h = cv2.boundingRect(largest_contour)
 
             # Tampilkan rectange atau persegi
+            frame = cv2.putText(frame, 'BLUE', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
             frame = cv2.rectangle(frame, (x,y), (x+w, y+h), (255,0,0), 3)
 
-
-
-
+        # Detect Multi Object, Mendeteksi bangun datar, persegi persegi panjang, lingkaran, segitiga, war
+        
         # Tampilkan frame
         cv2.imshow('Thresh', thresh)
         cv2.imshow('Frame', frame)
