@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 
 def callback(_) :
     pass
@@ -108,6 +109,7 @@ def main(capture) :
             cv2.rectangle(frame, (a, b), (c + a, d + b), (0, 255,0), 2)
 
         # print(x, y, w, h)
+
 
         cv2.imshow('kernel', kernel)
         cv2.imshow('thresh', thresh)
