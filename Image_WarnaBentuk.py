@@ -52,7 +52,6 @@ def main():
     img = cv2.resize(img, (0,0), fx=0.3, fy= 0.3)
     imgContour = img.copy()
     imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-
     while True:
         lower_hsv1 = get_lower_hsv1()
         upper_hsv1 = get_upper_hsv1()
@@ -64,7 +63,8 @@ def main():
         print(upper_hsv1)
         print(lower_hsv2)
         print(upper_hsv2)
-    
+
+
         thresh_green = cv2.inRange(imgGray, lower_hsv1, upper_hsv1)
         thresh_blue = cv2.inRange(imgGray, lower_hsv2, upper_hsv2)
 
@@ -72,16 +72,16 @@ def main():
         thresh_green = cv2.morphologyEx(thresh_green, cv2.MORPH_OPEN, kernel)
         thresh_blue = cv2.morphologyEx(thresh_blue, cv2.MORPH_OPEN, kernel)
 
-        thresh_green = cv2.erode(thresh_green, kernel, iterations = 1)
-        thresh_blue = cv2.erode(thresh_blue, kernel, iterations = 1)
+        imgCanny1 = cv2.Canny(thresh_green, 50, 50)
+        imgCanny2 = cv2.Canny(thresh_blue, 50, 50)
 
-        contours, _ = cv2.findContours(thresh_green, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-        contours2, _ = cv2.findContours(thresh_blue, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        contours, _ = cv2.findContours(imgCanny1, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        contours2, _ = cv2.findContours(imgCanny2, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
         for contour1 in contours:
             area = cv2.contourArea(contour1)
             # print(area)
-            if area > 5000:
+            if area > 1000:
                 cv2.drawContours(imgContour, contour1, -1, (0, 0, 0), 3)
                 peri = cv2.arcLength(contour1, True)
                 approx = cv2.approxPolyDP(contour1, 0.02*peri, True)
@@ -103,13 +103,13 @@ def main():
                 else:
                     tipeObject = 'Benda lain'
                 
-                cv2.putText(imgContour, tipeObject, (x+10, y+30), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,0), 2, cv2.LINE_AA)
+                cv2.putText(imgContour, tipeObject, (x+10, y+30), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,0), 1, cv2.LINE_AA)
 
         for contour2 in contours2:
             area = cv2.contourArea(contour2)
             # print(area)
-            if area > 5000:
-                #cv2.drawContours(imgContour, contour2, -1, (0, 0, 0), 3)
+            if area > 1000:
+                cv2.drawContours(imgContour, contour2, -1, (0, 0, 0), 3)
                 peri = cv2.arcLength(contour2, True)
                 approx = cv2.approxPolyDP(contour2, 0.02*peri, True)
                 #print(approx)
@@ -130,11 +130,15 @@ def main():
                 else:
                     tipeObject = 'Benda lain'
                 
-                cv2.putText(imgContour, tipeObject, (x+10, y+30), cv2.FONT_HERSHEY_COMPLEX, 1, (255,0,0), 2, cv2.LINE_AA)
+                cv2.rectangle(imgContour, (x,y), (x+w, y+h), (255,0,0), 3)
+                cv2.putText(imgContour, tipeObject, (x+10, y+30), cv2.FONT_HERSHEY_COMPLEX, 1, (255,0,0), 1, cv2.LINE_AA)
+                cv2.imshow('Image contour', imgContour)
 
         cv2.imshow('Thresh Green', thresh_green)
         cv2.imshow('Thresh Blue', thresh_blue)
-        cv2.imshow('Image contour', imgContour)
+        cv2.imshow('Iamge Canny Blue', imgCanny2)
+        cv2.imshow('Iamge Canny Green', imgCanny1)
+        
 
         if cv2.waitKey(1) == ord('q'):
             break
