@@ -50,9 +50,9 @@ def get_upper_hsv2():
 def main():
     img = cv2.imread('bentuk.png', -1)
     img = cv2.resize(img, (0,0), fx=0.3, fy= 0.3)
-    imgContour = img.copy()
     imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     while True:
+        imgContour = img.copy()
         lower_hsv1 = get_lower_hsv1()
         upper_hsv1 = get_upper_hsv1()
 
@@ -132,12 +132,12 @@ def main():
                 
                 cv2.rectangle(imgContour, (x,y), (x+w, y+h), (255,0,0), 3)
                 cv2.putText(imgContour, tipeObject, (x+10, y+30), cv2.FONT_HERSHEY_COMPLEX, 1, (255,0,0), 1, cv2.LINE_AA)
-                cv2.imshow('Image contour', imgContour)
 
+        cv2.imshow('Image contour', imgContour)
         cv2.imshow('Thresh Green', thresh_green)
         cv2.imshow('Thresh Blue', thresh_blue)
-        cv2.imshow('Iamge Canny Blue', imgCanny2)
-        cv2.imshow('Iamge Canny Green', imgCanny1)
+        cv2.imshow('Image Canny Blue', imgCanny2)
+        cv2.imshow('Image Canny Green', imgCanny1)
         
 
         if cv2.waitKey(1) == ord('q'):
