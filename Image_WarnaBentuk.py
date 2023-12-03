@@ -47,27 +47,33 @@ def get_upper_hsv2():
     upper_value2 = cv2.getTrackbarPos('UV', 'HSV Trackbars Blue')
     return (upper_hue2, upper_saturation2, upper_value2)
 
-def main(capture):
+def main():
+    img = cv2.imread('bentuk.png', -1)
+    img = cv2.resize(img, (0,0), fx=0.3, fy= 0.3)
+    imgContour = img.copy()
+    imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
     while True:
-        ret, frame = capture.read()
-
-        #frame = cv2.resize(frame, (0,0), fx=0.4, fy=0.4)
-
         lower_hsv1 = get_lower_hsv1()
         upper_hsv1 = get_upper_hsv1()
 
         lower_hsv2 = get_lower_hsv2()
         upper_hsv2 = get_upper_hsv2()
 
-        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-      
-        thresh_green = cv2.inRange(hsv, lower_hsv1, upper_hsv1)
-        thresh_blue = cv2.inRange(hsv, lower_hsv2, upper_hsv2)
+        print(lower_hsv1)
+        print(upper_hsv1)
+        print(lower_hsv2)
+        print(upper_hsv2)
+    
+        thresh_green = cv2.inRange(imgGray, lower_hsv1, upper_hsv1)
+        thresh_blue = cv2.inRange(imgGray, lower_hsv2, upper_hsv2)
 
-     
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5))
         thresh_green = cv2.morphologyEx(thresh_green, cv2.MORPH_OPEN, kernel)
         thresh_blue = cv2.morphologyEx(thresh_blue, cv2.MORPH_OPEN, kernel)
+
+        thresh_green = cv2.erode(thresh_green, kernel, iterations = 1)
+        thresh_blue = cv2.erode(thresh_blue, kernel, iterations = 1)
 
         contours, _ = cv2.findContours(thresh_green, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         contours2, _ = cv2.findContours(thresh_blue, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -75,8 +81,8 @@ def main(capture):
         for contour1 in contours:
             area = cv2.contourArea(contour1)
             # print(area)
-            if area > 1000:
-                cv2.drawContours(frame, contour1, -1, (0, 255, 0), 3)
+            if area > 5000:
+                cv2.drawContours(imgContour, contour1, -1, (0, 0, 0), 3)
                 peri = cv2.arcLength(contour1, True)
                 approx = cv2.approxPolyDP(contour1, 0.02*peri, True)
                 #print(approx)
@@ -85,7 +91,7 @@ def main(capture):
                 x, y, w, h = cv2.boundingRect(approx)
 
                 if sudutObject == 3:
-                    tipeObject = 'Segitiga Hijau' 
+                    tipeObject = 'Segitiga Hijau'
                 elif sudutObject == 4:
                     rasio = w/float(h)
                     if rasio > 0.9 and rasio < 1.1:
@@ -97,13 +103,13 @@ def main(capture):
                 else:
                     tipeObject = 'Benda lain'
                 
-                cv2.putText(frame, tipeObject, (x+10, y+30), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,0), 2, cv2.LINE_AA)
+                cv2.putText(imgContour, tipeObject, (x+10, y+30), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,0), 2, cv2.LINE_AA)
 
         for contour2 in contours2:
             area = cv2.contourArea(contour2)
             # print(area)
-            if area > 1000:
-                cv2.drawContours(frame, contour2, -1, (255, 0, 0), 3)
+            if area > 5000:
+                #cv2.drawContours(imgContour, contour2, -1, (0, 0, 0), 3)
                 peri = cv2.arcLength(contour2, True)
                 approx = cv2.approxPolyDP(contour2, 0.02*peri, True)
                 #print(approx)
@@ -124,26 +130,17 @@ def main(capture):
                 else:
                     tipeObject = 'Benda lain'
                 
-                cv2.putText(frame, tipeObject, (x+10, y+30), cv2.FONT_HERSHEY_COMPLEX, 1, (255,0,0), 2, cv2.LINE_AA)
+                cv2.putText(imgContour, tipeObject, (x+10, y+30), cv2.FONT_HERSHEY_COMPLEX, 1, (255,0,0), 2, cv2.LINE_AA)
 
-        # Detect Multi Object, Mendeteksi bangun datar, persegi persegi panjang, lingkaran, segitiga, war
-        
-        # Tampilkan frame
-        cv2.imshow('Thresh Blue', thresh_blue)
         cv2.imshow('Thresh Green', thresh_green)
-        cv2.imshow('Frame', frame)
+        cv2.imshow('Thresh Blue', thresh_blue)
+        cv2.imshow('Image contour', imgContour)
 
-        # Kondisi untuk end while loop
         if cv2.waitKey(1) == ord('q'):
             break
-    
-    frame.release()
-    cv2.destroyAllWindows
+        
 
-# Entry Point
 if __name__ == '__main__':
     init_trackbars_green()
     init_trackbars_blue()
-
-    camera = cv2.VideoCapture(0)
-    main(camera)
+    main()
