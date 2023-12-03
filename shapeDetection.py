@@ -27,14 +27,21 @@ def main(capture) :
             y_mid = int(y +h/1.5)
 
             coords = (x_mid, y_mid)
-            colour = (0, 0, 0)
+            colour = (0, 255, 0)
             font = cv.FONT_HERSHEY_SIMPLEX
 
             if len(approx) == 3 :
                 cv.putText(frame, "Segitiga", coords, font, 1, colour, 1)
                 cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
-            elif len(approx) == 4 :
+            elif len(approx) == 4 and x == y:
                 cv.putText(frame, "persegi", coords, font, 1, colour, 1)
+                cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
+            elif len(approx) == 4 and x != y:
+                cv.putText(frame, "persegi panjang", coords, font, 1, colour, 1)
+                cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
+
+            else:
+                cv.putText(frame, "lingkaran", coords, font, 1, colour, 1)
                 cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
             # else : 
             #     cv.putText(frame, "lingkaran", coords, font, 1, colour, 1)
