@@ -1,10 +1,5 @@
 import cv2 as cv
 
-def callBack(_) :
-    pass
-
-
-
 def main(cap) :
 
     while True :
