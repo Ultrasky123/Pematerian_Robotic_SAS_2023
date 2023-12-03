@@ -31,6 +31,8 @@ lower_blue = np.array([110,50,50])
 upper_blue = np.array([130,255,255])
 lower_green = np.array([45,100,20])
 upper_green = np.array([75,255,255])
+lower_red = np.array([0,100,100])
+upper_red = np.array([10,255,255])
 
 def main(capture):
     while True:
@@ -56,8 +58,10 @@ def main(capture):
         image =cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
         mask1 = cv2.inRange(image,lower_green,upper_green)
         mask2 = cv2.inRange(image,lower_blue,upper_blue)
+        mask3 = cv2.inRange(image,lower_red,upper_red)
         contours, _ = cv2.findContours(mask1,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         contours1, _ = cv2.findContours(mask2,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        contours2, _ = cv2.findContours(mask3,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
         # ketika ada warna hijau
         if len(contours)!= 0:
@@ -73,6 +77,14 @@ def main(capture):
                     x,y,w,h = cv2.boundingRect(contour)
                     cv2.rectangle(frame,(x,y),(w+x,h+y), (255,0,0),2)
                     cv2.putText(frame,'BLUE',(x,y),cv2.FONT_HERSHEY_SIMPLEX,2,(255,0,0),2)
+        # ketika ada warna merah
+        if len(contours2)!= 0:
+            for contour in contours2:
+                if cv2.contourArea(contour)>500:
+                    x,y,w,h = cv2.boundingRect(contour)
+                    cv2.rectangle(frame,(x,y),(w+x,h+y), (0,0,255),2)
+                    cv2.putText(frame,'RED',(x,y),cv2.FONT_HERSHEY_SIMPLEX,2,(0,0,255),2)
+
 
         # tampilkan frame
         cv2.imshow('mask',mask1+mask2)
