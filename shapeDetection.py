@@ -11,7 +11,7 @@ def main(capture) :
         _, thresh = cv.threshold(gray, 220, 255, cv.THRESH_BINARY)
         kernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (5, 5))
         thresh = cv.morphologyEx(thresh, cv.MORPH_OPEN, kernel)
-        contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+        contours,  = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
         for i, contour in enumerate(contours) :
             if i == 0 :
@@ -45,8 +45,6 @@ def main(capture) :
                 cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
             # else : 
             #     cv.putText(frame, "lingkaran", coords, font, 1, colour, 1)
-
-
 
         cv.imshow('Frame', frame)
         cv.imshow('Gray', gray)
