@@ -27,11 +27,11 @@ def get_upper_hsv():
     upper_val = cv2.getTrackbarPos('UV','HSV Trackbars')
     return(upper_hue,upper_sat,upper_val)
 
-lower_blue = np.array([110,50,50])
-upper_blue = np.array([130,255,255])
-lower_green = np.array([20,58,0])
-upper_green = np.array([52,255,255])
-lower_red = np.array([0,160,0])
+lower_blue = np.array([93,0,34])
+upper_blue = np.array([155,255,255])
+lower_green = np.array([27,26,92])
+upper_green = np.array([90,255,255])
+lower_red = np.array([121,129,0])
 upper_red = np.array([255,255,255])
 
 def main(capture):
@@ -51,14 +51,17 @@ def main(capture):
         thresh = cv2.inRange(hsv,lower_hsv, upper_hsv)
 
         # mengurangi noise hasil dari filter warna
-        kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5))
+        kernel = np.ones((5,5), np.uint8)
         thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel)
 
         # generate kontur objek
         image =cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
-        mask1 = cv2.inRange(image,lower_green,upper_green,kernel)
-        mask2 = cv2.inRange(image,lower_blue,upper_blue,kernel)
-        mask3 = cv2.inRange(image,lower_red,upper_red,kernel)
+        mask1 = cv2.inRange(image,lower_green,upper_green)
+        mask2 = cv2.inRange(image,lower_blue,upper_blue)
+        mask3 = cv2.inRange(image,lower_red,upper_red)
+        mask1 = cv2.erode(mask1,kernel)
+        mask2 = cv2.erode(mask2,kernel)
+        mask3 = cv2.erode(mask3,kernel)
         contours, _ = cv2.findContours(mask1,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         contours1, _ = cv2.findContours(mask2,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         contours2, _ = cv2.findContours(mask3,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
