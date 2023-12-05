@@ -8,10 +8,10 @@ def callback(_):
     pass
     
 cv2.namedWindow('HSV Trackbars')
-cv2.createTrackbar('LH','HSV Trackbars',20,255, callback)
-cv2.createTrackbar('LS','HSV Trackbars',58,255, callback)
-cv2.createTrackbar('LV','HSV Trackbars',0,255, callback)
-cv2.createTrackbar('UH','HSV Trackbars',52,255, callback)
+cv2.createTrackbar('LH','HSV Trackbars',29,255, callback)
+cv2.createTrackbar('LS','HSV Trackbars',34,255, callback)
+cv2.createTrackbar('LV','HSV Trackbars',60,255, callback)
+cv2.createTrackbar('UH','HSV Trackbars',255,255, callback)
 cv2.createTrackbar('US','HSV Trackbars',255,255, callback)
 cv2.createTrackbar('UV','HSV Trackbars',255,255, callback)
 
