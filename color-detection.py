@@ -29,10 +29,10 @@ def get_upper_hsv():
 
 lower_blue = np.array([110,50,50])
 upper_blue = np.array([130,255,255])
-lower_green = np.array([45,100,20])
-upper_green = np.array([75,255,255])
-lower_red = np.array([0,100,100])
-upper_red = np.array([10,255,255])
+lower_green = np.array([20,58,0])
+upper_green = np.array([52,255,255])
+lower_red = np.array([0,160,0])
+upper_red = np.array([255,255,255])
 
 def main(capture):
     while True:
@@ -56,9 +56,9 @@ def main(capture):
 
         # generate kontur objek
         image =cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
-        mask1 = cv2.inRange(image,lower_green,upper_green)
-        mask2 = cv2.inRange(image,lower_blue,upper_blue)
-        mask3 = cv2.inRange(image,lower_red,upper_red)
+        mask1 = cv2.inRange(image,lower_green,upper_green,kernel)
+        mask2 = cv2.inRange(image,lower_blue,upper_blue,kernel)
+        mask3 = cv2.inRange(image,lower_red,upper_red,kernel)
         contours, _ = cv2.findContours(mask1,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         contours1, _ = cv2.findContours(mask2,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         contours2, _ = cv2.findContours(mask3,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
@@ -87,7 +87,7 @@ def main(capture):
 
 
         # tampilkan frame
-        cv2.imshow('mask',mask1+mask2)
+        cv2.imshow('mask',mask1+mask2+mask3)
         cv2.imshow('Frame',frame)
 
         # kondisi untuk end while loop
