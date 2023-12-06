@@ -11,11 +11,13 @@ def main(capture) :
         _, thresh = cv.threshold(gray, 220, 255, cv.THRESH_BINARY)
         kernel = cv.getStructuringElement(cv.MORPH_ELLIPSE, (5, 5))
         thresh = cv.morphologyEx(thresh, cv.MORPH_OPEN, kernel)
-        contours,  = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+        contours, _= cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
         for i, contour in enumerate(contours) :
             if i == 0 :
                 continue
+
+            
 
             epsilon = 0.01*cv.arcLength(contour, True)
             approx = cv.approxPolyDP(contour, epsilon, True)
@@ -31,17 +33,17 @@ def main(capture) :
             font = cv.FONT_HERSHEY_SIMPLEX
 
             if len(approx) == 3 :
-                cv.putText(frame, "Segitiga", coords, font, 1, colour, 1)
+                cv.putText(frame, "Segitiga", coords, font, 1, colour, 2)
                 cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
             elif len(approx) == 4 and x == y:
-                cv.putText(frame, "persegi", coords, font, 1, colour, 1)
+                cv.putText(frame, "persegi", coords, font, 1, colour, 2)
                 cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
             elif len(approx) == 4 and x != y:
-                cv.putText(frame, "persegi panjang", coords, font, 1, colour, 1)
+                cv.putText(frame, "persegi panjang", coords, font, 1, colour, 2)
                 cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
 
-            else:
-                cv.putText(frame, "lingkaran", coords, font, 1, colour, 1)
+            elif len(approx) > 10:
+                cv.putText(frame, "lingkaran", coords, font, 1, colour, 2)
                 cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
             # else : 
             #     cv.putText(frame, "lingkaran", coords, font, 1, colour, 1)

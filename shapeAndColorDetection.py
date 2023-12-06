@@ -48,7 +48,7 @@ def main(cap) :
             coords = (x_mid, y_mid)
             
 
-        if contour_blue :
+        if contour_blue  :
 
             colour = (255, 0, 0)
             font = cv.FONT_HERSHEY_SIMPLEX
