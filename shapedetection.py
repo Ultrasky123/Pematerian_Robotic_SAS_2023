@@ -42,11 +42,10 @@ def main(capture):
 
         for contour in contours:
             area = cv2.contourArea(contour)
-            if area > 500:  # Filter contours by area to avoid noise
+            if area > 500: 
                 perimeter = cv2.arcLength(contour, True)
                 approx = cv2.approxPolyDP(contour, 0.03 * perimeter, True)
 
-                # Detect and label shapes based on the number of vertices
                 if len(approx) == 3:
                     shape = "Triangle"
                 elif len(approx) == 4:

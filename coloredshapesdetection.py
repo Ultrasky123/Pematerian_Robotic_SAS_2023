@@ -8,15 +8,15 @@ def init_trackbars():
     cv2.createTrackbar('LH_Blue', 'HSV Trackbars', 100, 255, callback)
     cv2.createTrackbar('LS_Blue', 'HSV Trackbars', 100, 255, callback)
     cv2.createTrackbar('LV_Blue', 'HSV Trackbars', 100, 255, callback)
-    cv2.createTrackbar('UH_Blue', 'HSV Trackbars', 150, 255, callback)
+    cv2.createTrackbar('UH_Blue', 'HSV Trackbars', 130, 255, callback)
     cv2.createTrackbar('US_Blue', 'HSV Trackbars', 255, 255, callback)
     cv2.createTrackbar('UV_Blue', 'HSV Trackbars', 255, 255, callback)
-    cv2.createTrackbar('LH_Red', 'HSV Trackbars', 110, 255, callback)
+    cv2.createTrackbar('LH_Red', 'HSV Trackbars', 115, 255, callback)
     cv2.createTrackbar('LS_Red', 'HSV Trackbars', 100, 255, callback)
     cv2.createTrackbar('LV_Red', 'HSV Trackbars', 100, 255, callback)
     cv2.createTrackbar('UH_Red', 'HSV Trackbars', 180, 255, callback)
     cv2.createTrackbar('US_Red', 'HSV Trackbars', 255, 255, callback)
-    cv2.createTrackbar('UV_Red', 'HSV Trackbars', 130, 255, callback)
+    cv2.createTrackbar('UV_Red', 'HSV Trackbars', 255, 255, callback)
 
 def get_hsv_values(color):
     lower_hue = cv2.getTrackbarPos(f'LH_{color}', 'HSV Trackbars')
@@ -31,7 +31,6 @@ def detect_shape(contour):
     perimeter = cv2.arcLength(contour, True)
     approx = cv2.approxPolyDP(contour, 0.03 * perimeter, True)
 
-    # Detect and label shapes based on the number of vertices
     if len(approx) == 3:
         return "Triangle"
     elif len(approx) == 4:
@@ -57,17 +56,17 @@ def main(capture):
 
         for contour in contours_blue:
             area = cv2.contourArea(contour)
-            if area > 500:  # Filter contours by area to avoid noise
+            if area > 500: 
                 shape = detect_shape(contour)
                 color = "Blue"
                 
                 x, y, w, h = cv2.boundingRect(contour)
-                cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 255, 255), 2)
-                cv2.putText(frame, f"{color} {shape}", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 255, 255), 2)
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
+                cv2.putText(frame, f"{color} {shape}", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 0), 2)
 
         for contour in contours_red:
             area = cv2.contourArea(contour)
-            if area > 500:  # Filter contours by area to avoid noise
+            if area > 500:  
                 shape = detect_shape(contour)
                 color = "Red"
                 

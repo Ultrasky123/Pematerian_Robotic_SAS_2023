@@ -8,17 +8,17 @@ def init_trackbars():
     cv2.createTrackbar('Blue LH', 'Blue HSV Trackbars', 100, 255, callback)
     cv2.createTrackbar('Blue LS', 'Blue HSV Trackbars', 100, 255, callback)
     cv2.createTrackbar('Blue LV', 'Blue HSV Trackbars', 100, 255, callback)
-    cv2.createTrackbar('Blue UH', 'Blue HSV Trackbars', 150, 255, callback)
+    cv2.createTrackbar('Blue UH', 'Blue HSV Trackbars', 130, 255, callback)
     cv2.createTrackbar('Blue US', 'Blue HSV Trackbars', 255, 255, callback)
     cv2.createTrackbar('Blue UV', 'Blue HSV Trackbars', 255, 255, callback)
 
     cv2.namedWindow('Red HSV Trackbars')
-    cv2.createTrackbar('Red LH', 'Red HSV Trackbars', 110, 255, callback)
+    cv2.createTrackbar('Red LH', 'Red HSV Trackbars', 115, 255, callback)
     cv2.createTrackbar('Red LS', 'Red HSV Trackbars', 100, 255, callback)
     cv2.createTrackbar('Red LV', 'Red HSV Trackbars', 100, 255, callback)
     cv2.createTrackbar('Red UH', 'Red HSV Trackbars', 180, 255, callback)
     cv2.createTrackbar('Red US', 'Red HSV Trackbars', 255, 255, callback)
-    cv2.createTrackbar('Red UV', 'Red HSV Trackbars', 130, 255, callback)
+    cv2.createTrackbar('Red UV', 'Red HSV Trackbars', 255, 255, callback)
 
 def get_blue_lower_hsv():
     lower_hue = cv2.getTrackbarPos('Blue LH', 'Blue HSV Trackbars')
