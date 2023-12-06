@@ -100,15 +100,15 @@ def main(capture):
                 cv2.drawContours(frame, [approx], 0 ,(0,0,0),5)
                 x,y,w,h = cv2.boundingRect(cnt)
                 if len(approx) == 3:
-                    cv2.putText(frame,"Green Triangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                    cv2.putText(frame,"Green Triangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
                 elif len(approx) == 4:
                     ratio = float(w)/h
                     if ratio >= 0.9 and ratio <= 1.1 :
-                        cv2.putText(frame,"Green Square",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                        cv2.putText(frame,"Green Square",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
                     else:
-                        cv2.putText(frame,"Green Rectangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                        cv2.putText(frame,"Green Rectangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
                 elif 8 <= len(approx) < 15 :
-                    cv2.putText(frame,"Green Circle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                    cv2.putText(frame,"Green Circle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
                 cv2.rectangle(frame,(x,y),(w+x,h+y), (0,255,0),2)
 
         for cnt in contours2:
@@ -118,15 +118,15 @@ def main(capture):
                 cv2.drawContours(frame, [approx], 0 ,(0,0,0),5)
                 x,y,w,h = cv2.boundingRect(cnt)
                 if len(approx) == 3:
-                    cv2.putText(frame,"Blue Triangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                    cv2.putText(frame,"Blue Triangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,0),2)
                 elif len(approx) == 4:
                     ratio = float(w)/h
                     if ratio >= 0.9 and ratio <= 1.1 :
-                        cv2.putText(frame,"Blue Square",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                        cv2.putText(frame,"Blue Square",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,0),2)
                     else:
-                        cv2.putText(frame,"Blue Rectangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                        cv2.putText(frame,"Blue Rectangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,0),2)
                 elif 8 <= len(approx) < 15 :
-                    cv2.putText(frame,"Blue Circle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                    cv2.putText(frame,"Blue Circle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(255,0,0),2)
                 cv2.rectangle(frame,(x,y),(w+x,h+y), (255,0,0),2)
 
         for cnt in contours3:
@@ -136,15 +136,15 @@ def main(capture):
                 cv2.drawContours(frame, [approx], 0 ,(0,0,0),5)
                 x,y,w,h = cv2.boundingRect(cnt)
                 if len(approx) == 3:
-                    cv2.putText(frame,"Red Triangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                    cv2.putText(frame,"Red Triangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255),2)
                 elif len(approx) == 4:
                     ratio = float(w)/h
                     if ratio >= 0.9 and ratio <= 1.1 :
-                        cv2.putText(frame,"Red Square",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                        cv2.putText(frame,"Red Square",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255),2)
                     else:
-                        cv2.putText(frame,"Red Rectangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                        cv2.putText(frame,"Red Rectangle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255),2)
                 elif 8 <= len(approx) < 15 :
-                    cv2.putText(frame,"Red Circle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,0),2)
+                    cv2.putText(frame,"Red Circle",(x,y),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255),2)
                 cv2.rectangle(frame,(x,y),(w+x,h+y), (0,0,255),2)
 
         # Tampilkan frame
