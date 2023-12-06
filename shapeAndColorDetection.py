@@ -9,9 +9,9 @@ def main(cap) :
 
         rgb = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
 
-        red = (255, 0, 0)
+        red = (210, 0, 0)
 
-        blue = (0, 0, 255)
+        blue = (0, 0, 210)
 
         thresh_RedColor = cv.inRange(rgb, red, (255, 255, 255))
         thresh_BlueColor = cv.inRange(rgb, blue, (255, 255, 255))
