@@ -70,9 +70,7 @@ def main(capture):
             # X & Y = koordinat / W & H = ukuran
             x, y, w, h = cv2.boundingRect(largest_contour)
             # Tampilkan rectangle /kotak
-            cv2.putText(frame, 'BLUE', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 3)
-            cv2.putText(frame, 'GREEN', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
-            cv2.putText(frame, 'RED', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+            cv2.putText(frame, 'GREEN', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 3)
             cv2.rectangle(frame, (x, y), (w + x, h + y), (255, 0, 0), 2)
 
         cv2.imshow('HSV', hsv)
