@@ -6,9 +6,14 @@ def main(capture) :
 
     face_dataset = '/home/aswangga/Materi Robotic/haarcascade_frontalface_default.xml'
     eye_dataset = '/home/aswangga/Materi Robotic/haarcascade_eye.xml'
+    upperBody_dataset = '/home/aswangga/Materi Robotic/haarcascade_upperbody.xml'
+    smile_dataset = '/home/aswangga/Materi Robotic/haarcascade_smile.xml'
 
     fase_cascade = cv2.CascadeClassifier(face_dataset)
     eye_cascade = cv2.CascadeClassifier(eye_dataset)
+    upperBody_cascade =cv2.CascadeClassifier(upperBody_dataset)
+    smile_cascade = cv2.CascadeClassifier(smile_dataset)
+    
 
     while True :
         # print(capture.read())
@@ -19,34 +24,42 @@ def main(capture) :
 
 
 ## Deteksi Haar cascade
+
+        upperBody = upperBody_cascade.detectMultiScale(gray)
         faces = fase_cascade.detectMultiScale(gray)
+
+        for (x3, y3, w3, h3) in upperBody :
+
         # Untuk setiap wajah yang terdeteksi
-        for (x, y, w, h) in faces :
-            # Simpan koordinat titik tengah wajah
-            center = ((x + w //2, y + h //2))
+            for (x, y, w, h) in faces :
 
-            # Tampilkan lingkaran
-            frame = cv2.ellipse(frame, center, (w//2, h//2), 0, 0,360, (255, 0, 0), 2)
+                smile = smile_cascade.detectMultiScale(gray)
 
-            # Tentukan wilayah awajah yang terdeteksi
-            face_roi = gray[y:y+h, x:x+w]
+                for (a, b, c, d) in smile :
+                # Simpan koordinat titik tengah wajah
 
-            print(face_roi)
+                    if len(smile) > 30 :
+                        center = ((x + w //2, y + h //2))
+                        # Tampilkan lingkaran
+                        cv2.putText(frame, f'Senyum {len(smile)}', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+                        cv2.rectangle(frame, (x, y), (w + x, h + y), (0, 255,0), 2)
+                        # Tentukan wilayah awajah yang terdeteksi
+                        # face_roi = gray[y:y+h, x:x+w]
+                        # # print(face_roi)
+                        # eyes = eye_cascade.detectMultiScale(face_roi)
+                        # Untuk Setiap Mata Yang terdeteksi
+                        # for (x2, y2, w2, h2) in eyes :
+                        #     # Tentukan koordinat tengah mata
+                        #     eye_center = (x+x2+w2//2, y + y2 + h2//2)
+                        #     # Simpan nilai jari2 dari mata yang terdeteksi
+                        #     radius = int(round((w2+h2) * 0.25))
+                        #     # Tampilkan lingkaran
+                        #     frame = cv2.circle(frame, eye_center, radius, (0, 255, 0), 2)
 
+                    else :
+                        cv2.putText(frame, 'Tidak Senyum', (x, y+50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
+                        cv2.rectangle(frame, (x, y), (w + x, h + y), (0, 0,255), 2)
 
-            eyes = eye_cascade.detectMultiScale(face_roi)
-
-            # Untuk Setiap Mata Yang terdeteksi
-
-            for (x2, y2, w2, h2) in eyes :
-                # Tentukan koordinat tengah mata
-                eye_center = (x+x2+w2//2, y + y2 + h2//2)
-                # Simpan nilai jari2 dari mata yang terdeteksi
-                radius = int(round((w2+h2) * 0.25))
-
-                # Tampilkan lingkaran
-
-                frame = cv2.circle(frame, eye_center, radius, (0, 255, 0), 2)
 
         print(faces)
 
