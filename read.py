@@ -17,7 +17,7 @@ while True:
 
     cv.imshow('Video', frame)
 
-    if cv.waitKey(20) & 0xFF==ord('d'):
+    if cv.waitKey(20) & 0xFF==ord('q'):
         break
 
 capture.realese()
