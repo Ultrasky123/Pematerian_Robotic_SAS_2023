@@ -49,5 +49,6 @@ cv2.imshow("Blur",imgBlur)
 cv2.imshow("Original",imgCanny)
 cv2.imshow("Result",imgCountour)
 
-
 cv2.waitKey(0)
+
+#Belum beres
