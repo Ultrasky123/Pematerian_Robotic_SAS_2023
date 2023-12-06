@@ -148,7 +148,9 @@ def main(capture):
                 cv2.rectangle(frame,(x,y),(w+x,h+y), (0,0,255),2)
 
         # Tampilkan frame
-        cv2.imshow("mask",mask1)
+        cv2.imshow("mask",mask1 +mask2+mask3)
+        # cv2.imshow("mask2",mask2)
+        # cv2.imshow("mask3",mask3)
         cv2.imshow('Frame',frame)
         # Kondisi untuk end while loop
         if cv2.waitKey(1) == ord('q'):
