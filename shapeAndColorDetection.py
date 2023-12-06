@@ -59,16 +59,16 @@ def main(cap) :
 
             if len(approx) == 3 :
 
-                cv.putText(frame, 'SEGITIGA BIRU', (x, y+50), font, 1, (255, 0, 0), 3)
+                cv.putText(frame, 'SEGITIGA BIRU', (x, y+50), font, 1, colour, 2)
                 cv.rectangle(frame, (x, y), (w + x, h + y), (255, 0,0), 2)
             elif len(approx) == 4 and x == y:
-                cv.putText(frame, "PERSEGI BIRU", (x, y+50), font, 1, colour, 3)
+                cv.putText(frame, "PERSEGI BIRU", (x, y+50), font, 1, colour, 2)
                 cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
             elif len(approx) == 4 and x != y:
-                cv.putText(frame, "PERSEGI PANJANG BIRU", (x, y+50), font, 1, colour, 3)
+                cv.putText(frame, "PERSEGI PANJANG BIRU", (x, y+50), font, 1, colour, 2)
                 cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
             elif len(approx) <= 10 and x != y :
-                cv.putText(frame, "LINGKARAN BIRU", (x, y+50), font, 1, colour, 3)
+                cv.putText(frame, "LINGKARAN BIRU", (x, y+50), font, 1, colour, 2)
                 cv.rectangle(frame, (x, y), (w+x, h+y), (0, 255,0), 2)
 
         if contour_red :
