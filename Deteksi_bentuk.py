@@ -10,7 +10,7 @@ def getContour(imgCanny, imgContour):
             cv2.drawContours(imgContour, contour, -1, (0, 0, 0), 3)
             peri = cv2.arcLength(contour, True)
             approx = cv2.approxPolyDP(contour, 0.02*peri, True)
-            #print(approx)
+            print(approx)
             sudutObject = len(approx)
         
             x, y, w, h = cv2.boundingRect(approx)
@@ -49,5 +49,5 @@ cv2.imshow("Blur",imgBlur)
 cv2.imshow("Original",imgCanny)
 cv2.imshow("Result",imgCountour)
 
-cv2.waitKey(0)
 
+cv2.waitKey(0)
