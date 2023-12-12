@@ -38,7 +38,7 @@ def main(capture) :
                 for (a, b, c, d) in smile :
                 # Simpan koordinat titik tengah wajah
 
-                    if len(smile) > 30 :
+                    if len(smile) > 42 :
                         center = ((x + w //2, y + h //2))
                         # Tampilkan lingkaran
                         cv2.putText(frame, f'Senyum {len(smile)}', (x, y), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
