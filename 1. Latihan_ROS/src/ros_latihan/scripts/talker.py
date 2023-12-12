@@ -4,8 +4,8 @@ import rospy
 from std_msgs.msg import String
 
 def talker():
-    pub = rospy.Publisher('assalamualaikum', String, queue_size=10)
-    rospy.init_node('salam', anonymous=True)
+    pub = rospy.Publisher('salam', String, queue_size=10)
+    rospy.init_node('assalamaualaikum', anonymous=True)
     rate = rospy.Rate(10) # 10hz
     while not rospy.is_shutdown():
         hello_str = "hello world %s" % rospy.get_time()
