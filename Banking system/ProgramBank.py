@@ -41,3 +41,14 @@ def payment(self, other):
             print(f'Transaksi Berhasil. Total saldo saat ini: Rp.{self.acc_balance}')
         else:
             print('Jumlah Transaksi Invalid. Transaksi Diberhentikan..')
+
+        if __name__ == '__main__':
+    
+            cust1 = BankAccount(name='Irvan', mobile_no=1234567890, initial_depo=50000, pin=123)
+            cust2 = BankAccount(name='Viole', mobile_no=9876543210, initial_depo=100000, pin=456)
+            print('No. of customer is', BankAccount.no_of_cust)
+            print(cust1.basic_details())
+            print(cust2.basic_details())
+
+            cust1.payment(cust2)
+            print(cust2.basic_details())
