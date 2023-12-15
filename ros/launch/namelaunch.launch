@@ -1,0 +1,6 @@
+<launch>
+    <node pkg='basic_ros' type='name.py' name='node_name' output='screen'/>
+    <node pkg='basic_ros' type='iam.py' name='node_iam' output='screen'/>
+    <node pkg='basic_ros' type='call.py' name='node_call' output='screen'/>
+
+</launch>

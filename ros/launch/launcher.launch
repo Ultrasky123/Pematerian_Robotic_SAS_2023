@@ -1,0 +1,4 @@
+<launch>
+    <node pkg='basic_ros' type='talker.py' name='node_talker' output='screen'/>
+    <node pkg='basic_ros' type='listener.py' name='node_listener' output='screen'/>
+</launch>
