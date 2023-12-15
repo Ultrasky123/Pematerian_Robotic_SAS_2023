@@ -112,7 +112,7 @@ if login() == True:
         elif pilih == 4:
             setor_tunai()
         elif pilih == 5:
-            os.system('cls')
+            os.system('clear')
             print("Terima kasih!")
             break
         else:

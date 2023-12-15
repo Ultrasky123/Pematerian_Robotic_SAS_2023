@@ -30,3 +30,24 @@ def main():
 #untuk memastikan bahwa name dari program ini adalah__main__
 if __name__ == '__main__':
     main()
+
+#3.. program 
+#    *
+#   *  *
+#  *    *
+# *      *
+#  *    *
+#   *  *
+#    *
+
+rows = 5
+i = 1
+while i <= rows:
+    j = rows 
+    while j > i:
+        #spacenya
+        print('', end='')
+        j -= 1
+    print('*', end='')
+    k = 1
+    while k < 2

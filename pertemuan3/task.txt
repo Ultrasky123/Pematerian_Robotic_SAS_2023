@@ -1,0 +1,7 @@
+deteksi orang senang 
+
+dataset upperbody smile frontalface
+kondition: senyum = text hijau
+not senyum = merah
+
+rectangle put text
